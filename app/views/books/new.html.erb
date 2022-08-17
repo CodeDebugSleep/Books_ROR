@@ -1,0 +1,75 @@
+<form action = "/books" method = "POST" autocomplete = "off" class = "addForm" id = "bookForm">
+    <input name = "authenticity_token" value = "<%= form_authenticity_token %>" type = "hidden">
+    <section>
+        <label>Title: <span>*</span></label>
+        <input type = "text" name = "title">
+    </section>
+    <section>
+        <label>ISBN: <span>*</span></label>
+        <input type = "number" name = "isbn">
+    </section>
+    <section>
+        <label>Price: <span>*</span></label>
+        <input type = "text" name = "list_price">
+    </section>
+    <section>
+        <label>Year Published: <span>*</span></label>
+        <input type = "number" name = "year">
+    </section>
+    <section class = "autocomplete">
+        <label>Publisher: <span>*</span></label>
+        <input type = "text" class = "publisher" name = "publisher">
+        <ul class = "list" id = "pubList"></ul>
+    </section>
+    <section class = "autocomplete">
+        <label>Author: <span>*</span></label>
+        <input type = "text" class = "author">
+        <ul class = "list" id = "authorList"></ul>
+        <div class = "add_new">
+            <button type = "button" id = "newAuthor">New Author</button>
+            <button type = "button" id = "addAuthor">Add Author</button>
+        </div>
+        
+    </section>
+    <section>
+        <label>Image URL: </label>
+        <input type = "text" name = "url">
+    </section>
+    <section>
+        <label>Edition: </label>
+        <input type = "number" name = "edition">
+    </section>
+    <hr>
+    <input type = "submit" value = "Add">
+</form>
+
+<div id = "author_modal">
+    <form action = "/authors" method = "POST" class = "addForm">
+        <section class = "errors">
+<% if flash.any? %>
+    <% flash.each do |type, msg| %>
+        <% msg.each do |msg_error| %>
+            <p><%= msg_error %></p>
+        <% end %>
+    <% end %>
+<% end %>
+        </section>
+        <input name = "authenticity_token" value = "<%= form_authenticity_token %>" type = "hidden">
+        <section>
+            <label>First Name:<span>*</span></label>
+            <input type = "text" name = "first_name">
+        </section>
+        <section>
+            <label>Middle Name:</label>
+            <input type = "text" name = "middle_name">
+        </section>
+        <section>
+            <label>Last Name:<span>*</span></label>
+            <input type = "text" name = "last_name">
+        </section>
+        <section id = "form-btn">
+            <input type = "button" value = "Save">
+            <button class = "error-btn" type = "button">Cancel</button>
+        </section>
+    </form>
+</div>

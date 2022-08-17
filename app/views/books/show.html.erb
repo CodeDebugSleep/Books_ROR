@@ -1,0 +1,32 @@
+<section id = "bookInfo">
+    <div id = "bookImg"><img src = "<%= @book.image_url %>"></div>
+    <div id = "bookData">
+        <div>
+            <h1><%= @book.title %></h1>
+<% @author.find_each do |author| %>
+            <p><%= author.first_name + " " + author.last_name %></p>
+<% end %>
+        </div>
+        <summary>
+            <section>
+                <label>Published By:</label>
+                <p><%= @book.publisher.name %>, <%= @book.publication_year %></p>
+            </section>
+            <section>
+                <label>Price:</label>
+                <p>₱<%= @book.list_price %></p>
+            </section>
+            <section>
+                <label>ISBN-13:</label>
+                <p id = "i_13"><%= @book.isbn_13 %></p>
+            </section>
+            <section>
+                <label>ISBN-10:</label>
+                <p id = "i_10"></p>
+            </section>
+            <section id = "desc">
+                <p>Despite the tumor-shrinking medical miracle that has bought her a few years, Hazel has never been anything but terminal, her final chapter inscribed upon diagnosis. But when a gorgeous plot twist named Augustus Waters suddenly appears at Cancer Kid Support Group, Hazel's story is about to be completely rewritten.</p>
+            </section>
+        </summary>
+    </div>
+</section>

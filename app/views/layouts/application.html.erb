@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>XyzBooks</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav id = "myTopnav" class = "topnav">
+        <a href = "/" id = "main-link">Home</a>
+        <a href = "/authors/index" id = "main-link">Authors</a>
+        <a href = "javascript:void(0);" class = "icon"><i class = "fa fa-bars"></i></a>
+    </nav>
+    <main>
+      <section class = "errors" id = "error_message">
+        <h1></h1>
+        <button class = "error-btn" type = "button">Close</button>
+      </section>
+      <section id = "search">
+          <input id = "isbn" type = "text" placeholder = "ISBN-13/ISBN-10">
+          <button>Search</button>
+      </section>
+      <section class = "errors">
+<% if flash.any? %>
+    <% flash.each do |type, msg| %>
+        <% msg.each do |msg_error| %>
+            <p><%= msg_error %></p>
+        <% end %>
+    <% end %>
+<% end %>
+      </section>
+    </main>
+      <%= yield %>
+    <div id = "add">
+        <button id = "btn-add">Add Book</button>
+    </div>
+  </body>
+</html>
